@@ -10,19 +10,19 @@ def enqueue(my_queue, element):
     return queue
 
 def dequeue(my_queue):
-    try:
+    if size(my_queue)==0:
+        raise Exception('EmptyStructureError: queue is empty')
+    else:
         element=sl.first_element(my_queue)
-        queue=sl.remove_first(my_queue)
+        my_queue=sl.remove_first(my_queue)
         return element
-    except Exception as exp:
-        print("EmptyStructureError: queue is empty")
         
 def peek(my_queue):
-    try:
+    if size(my_queue)==0:
+        raise Exception('EmptyStructureError: queue is empty')
+    else:
         element=sl.first_element(my_queue)
         return element
-    except Exception as exp:
-        print("EmptyStructureError: queue is empty")
 
 def is_empty(my_queue):
     return sl.size(my_queue)==0

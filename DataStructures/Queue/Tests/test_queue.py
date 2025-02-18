@@ -33,7 +33,7 @@ def test_dequeue():
     my_queue = setup_queue()
     queue.enqueue(my_queue, 10)
     queue.enqueue(my_queue, 20)
-
+    
     assert queue.dequeue(my_queue) == 10
     assert queue.size(my_queue) == 1
     assert queue.peek(my_queue) == 20  

@@ -42,8 +42,8 @@ def remove_last(my_list):
     """ Elimina el último elemento de la lista """
     if my_list["size"]== 0:
         return None
-    my_list["size"] -= 1
     my_list["elements"]=my_list["elements"][0:my_list["size"]]
+    my_list["size"] -= 1
     
     return my_list["size"]
 
@@ -51,8 +51,8 @@ def remove_first(my_list):
     """ Elimina el último elemento de la lista """
     if my_list["size"]== 0:
         return None
-    my_list["size"] -= 1
     my_list["elements"]=my_list["elements"][1:my_list["size"]]
+    my_list["size"] -= 1
     
     return my_list["size"]
 
