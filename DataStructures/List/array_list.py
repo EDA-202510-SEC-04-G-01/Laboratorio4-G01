@@ -58,3 +58,42 @@ def remove_first(my_list):
 
 def is_empty(my_list):
     return size(my_list)==0
+
+def insert_element(my_list, lmnt, pos):
+    my_list["elements"].insert(pos, lmnt)
+    my_list["size"] += 1
+    return my_list
+
+def delete_element(my_list, pos):
+    if not( 0 <= pos  and pos< size(my_list)):
+        raise IndexError('list index out of range')
+    else:
+        my_list["elements"].pop(pos)
+        my_list["size"] -= 1
+        return my_list
+
+def change_info(my_list, pos, new_info):
+    if not( 0 <= pos  and pos< size(my_list)):
+        raise IndexError('list index out of range')
+    else:
+        my_list["elements"][pos] = new_info
+        return my_list
+    
+def exchange(my_list, pos_1, pos_2):
+    if not((0 <= pos_1  and pos_1< size(my_list)) and (0 <= pos_2  and pos_2< size(my_list))):
+        raise IndexError('list index out of range')
+    else:
+        info1 = my_list["elements"][pos_1]
+        info2 = my_list["elements"][pos_2]
+        my_list["elements"][pos_1] = info1
+        my_list["elements"][pos_2] = info2
+        return my_list
+    
+def sub_list(my_list, pos_i, num_elements):
+    if not 0 < pos_i  or not pos_i< size(my_list):
+        raise IndexError('list index out of range')
+    else:
+        ansList = new_list()
+        for i in range(num_elements):
+            add_last(ansList, my_list["elements"][pos_i + i])
+        return ansList
