@@ -33,7 +33,7 @@ from DataStructures.Queue import queue as q
 
 # TODO:) Importar las librerías correspondientes para el manejo de pilas y colas
 
-data_dir = os.path.dirname(os.path.realpath('__file__')) + '/Data/'
+data_dir = os.path.dirname(os.path.realpath('__file__')) + '/Data/GoodReads/'
 
 """
 El controlador se encarga de mediar entre la vista y el modelo.
@@ -86,7 +86,7 @@ def load_books(catalog):
     cada uno de ellos, se crea en la lista de autores, a dicho autor y una
     referencia al libro que se esta procesando.
     """
-    booksfile = data_dir + '/books.csv'
+    booksfile = data_dir + '/books-small.csv'
     input_file = csv.DictReader(open(booksfile, encoding='utf-8'))
     for book in input_file:
         add_book(catalog, book)
