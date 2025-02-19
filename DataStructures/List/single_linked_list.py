@@ -1,3 +1,5 @@
+from DataStructures.List import list_node as ln
+
 def new_list():
     newlist = {
         'first': None,
@@ -30,27 +32,22 @@ def is_present(my_list, element, cmp_function):
     return count
 
 def add_first(my_list, lmnt):
-    lmntDict = {"info": lmnt, "next": None}
-    if my_list["size"] == 0:
-        my_list["first"] = lmntDict
-        my_list["last"] = lmntDict
-        my_list["size"] += 1
-    else:
-        lmntDict["next"] = my_list["first"]
-        my_list["first"] = lmntDict
-        my_list["size"] += 1
+    node = ln.new_single_node(lmnt)
+    node['next'] = my_list['first']
+    my_list['first'] = node
+    if (my_list['size'] == 0):
+        my_list['last'] = my_list['first']
+    my_list['size'] += 1
     return my_list
 
 def add_last(my_list, lmnt):
-    lmntDict = {"info": lmnt, "next": None}
+    node = ln.new_single_node(lmnt)
     if my_list["size"] == 0:
-        my_list["first"] = lmntDict
-        my_list["last"] = lmntDict
-        my_list["size"] += 1
+        my_list["first"] = node
     else:
-        my_list["last"]["next"] = lmntDict
-        my_list["last"] = lmntDict
-        my_list["size"] += 1
+        my_list["last"]["next"] = node
+    my_list['last'] = node
+    my_list['size'] += 1
     return my_list
 
 def size(my_list):
@@ -90,7 +87,7 @@ def remove_last(my_list):
     else:
         last = my_list["last"]["info"]
         temp = my_list["first"]
-        for i in range(size(my_list)-1):
+        for _ in range(size(my_list)-1):
             temp = temp["next"]
         temp["next"] = None
         my_list["last"] = temp
@@ -100,21 +97,21 @@ def insert_element(my_list, lmnt, pos):
     if pos < 0 or pos > size(my_list):
         raise Exception('IndexError: list index out of range')
     else:
-        lmntDict = {"info": lmnt, "next": None}
+        node = ln.new_single_node(lmnt)
         if pos == 0:
-            lmntDict["next"] = my_list["first"]
-            my_list["first"] = lmntDict
+            node["next"] = my_list["first"]
+            my_list["first"] = node
             my_list["size"] += 1
         elif pos == size(my_list):
-            my_list["last"]["next"] = lmntDict
-            my_list["last"] = lmntDict
+            my_list["last"]["next"] = node
+            my_list["last"] = node
             my_list["size"] += 1
         else:
             temp = my_list["first"]
             for _ in range(pos-1):
                 temp = temp["next"]
-            lmntDict["next"] = temp["next"]
-            temp["next"] = lmntDict["next"]
+            node["next"] = temp["next"]
+            temp["next"] = node
             my_list["size"] += 1
     return my_list
 

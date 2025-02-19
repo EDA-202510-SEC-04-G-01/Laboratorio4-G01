@@ -133,10 +133,11 @@ def get_books_stack_by_user(catalog, user_id):
     """
     Retorna una pila con los libros que un usuario tiene por leer.
     """
-    books, _, _, _, books_to_read = load_data(catalog)
+    books = catalog['books']
+    books_to_read = catalog['books_to_read']
     books_stack = st.new_stack()
     for books1 in books_to_read:
-        if books1['user_id'] == user_id:
+        if int(books1[1]) == user_id:
             book = lt.get_element(books, books1['book_id'])
             st.push(books_stack, book)
     
