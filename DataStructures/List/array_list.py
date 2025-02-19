@@ -90,7 +90,7 @@ def exchange(my_list, pos_1, pos_2):
         return my_list
     
 def sub_list(my_list, pos_i, num_elements):
-    if not 0 < pos_i  or not pos_i< size(my_list):
+    if not( 0 <= pos_i  and pos_i< size(my_list)):
         raise IndexError('list index out of range')
     else:
         ansList = new_list()
