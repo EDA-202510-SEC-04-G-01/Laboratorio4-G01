@@ -151,9 +151,9 @@ def get_user_position_on_queue(catalog, user_id, book_id):
     Retorna la posición de un usuario en la cola para leer un libro.
     """
     queue = q.new_queue()
-    _, _, _, _, books_to_read = load_data(catalog)
+    books_to_read = catalog['books_to_read']
     for book in books_to_read:
-        if book['book_id'] == book_id:
+        if int(book['book_id']) == book_id:
             q.enqueue(queue, book['user_id']) 
     for user in queue['elements']:
         position += 1
