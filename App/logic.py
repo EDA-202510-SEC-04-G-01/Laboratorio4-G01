@@ -86,7 +86,7 @@ def load_books(catalog):
     cada uno de ellos, se crea en la lista de autores, a dicho autor y una
     referencia al libro que se esta procesando.
     """
-    booksfile = data_dir + '/books-small.csv'
+    booksfile = data_dir + '/books.csv'
     input_file = csv.DictReader(open(booksfile, encoding='utf-8'))
     for book in input_file:
         add_book(catalog, book)
@@ -108,7 +108,7 @@ def load_books_tags(catalog):
     """
     Carga la información que asocia tags con libros.
     """
-    bookstagsfile = data_dir + '/book_tags-small.csv'
+    bookstagsfile = data_dir + '/book_tags.csv'
     input_file = csv.DictReader(open(bookstagsfile, encoding='utf-8'))
     for booktag in input_file:
         add_book_tag(catalog, booktag)
@@ -137,7 +137,7 @@ def get_books_stack_by_user(catalog, user_id):
     books_to_read = catalog['books_to_read']
     books_stack = st.new_stack()
     for books1 in books_to_read:
-        if int(books1[1]) == user_id:
+        if books1[1] == user_id:
             book = lt.get_element(books, books1['book_id'])
             st.push(books_stack, book)
     
@@ -153,7 +153,7 @@ def get_user_position_on_queue(catalog, user_id, book_id):
     queue = q.new_queue()
     books_to_read = catalog['books_to_read']
     for book in books_to_read:
-        if int(book['book_id']) == book_id:
+        if book['book_id'] == book_id:
             q.enqueue(queue, book['user_id']) 
     for user in queue['elements']:
         position += 1
