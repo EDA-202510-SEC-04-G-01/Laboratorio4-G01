@@ -31,29 +31,25 @@ def last_element(my_list):
 
 
 def add_first(my_list, lmnt):
-    my_list["elements"] = [lmnt] + my_list["elements"]
+    my_list["elements"].insert(0, lmnt)
     my_list["size"] += 1
-    
+   
 def add_last(my_list, lmnt):
-    my_list["elements"] = my_list["elements"] + [lmnt]
+    my_list["elements"].append(lmnt)
     my_list["size"] += 1
 
 def remove_last(my_list):
-    """ Elimina el último elemento de la lista """
-    if my_list["size"]== 0:
+    if my_list["size"] == 0:
         return None
-    my_list["elements"]=my_list["elements"][0:my_list["size"]]
+    my_list["elements"].pop()
     my_list["size"] -= 1
-    
     return my_list["size"]
 
 def remove_first(my_list):
-    """ Elimina el último elemento de la lista """
-    if my_list["size"]== 0:
+    if my_list["size"] == 0:
         return None
-    my_list["elements"]=my_list["elements"][1:my_list["size"]]
+    my_list["elements"].pop(0)
     my_list["size"] -= 1
-    
     return my_list["size"]
 
 def is_empty(my_list):
