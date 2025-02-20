@@ -12,7 +12,7 @@ def get_element(my_list, pos):
     searchpos = 0
     node = my_list["first"]
     while searchpos < pos:
-        node = node[next]
+        node = node["next"]
         searchpos += 1
     return node["info"]
 
